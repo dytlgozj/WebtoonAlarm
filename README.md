@@ -1,6 +1,6 @@
 # WAP
-<img src="http://i67.tinypic.com/20sbz15.jpg" height = "400">
->[link to image](http://www.pixiv.net/whitecube/user/3219949/illust/56260187/)
+<img src="http://i67.tinypic.com/20sbz15.jpg" height = "400" width = "600">
+>[link to image](http://www.pixiv.net/whitecube/user/3219949/illust/56260187)
 
 ## Webtoon Alarm Project
 
