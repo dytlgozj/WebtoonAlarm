@@ -1,7 +1,9 @@
 package teamwap.wap;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -24,8 +26,14 @@ import android.os.Bundle;
 import android.support.v7.app.NotificationCompat;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
+import java.util.ArrayList;
+
+import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
+    Button button1;
+    ArrayList<webtoonInfor> db = new ArrayList<webtoonInfor>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +45,18 @@ public class MainActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setIcon(R.mipmap.ic_launcher2);
+
+        button1 = (Button) findViewById(R.id.button1);
+        button1.setBackgroundColor(Color.WHITE);
+        button1.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v){
+                Toast.makeText(getApplicationContext(), "대학일기 페이지로 이동합니다.", Toast.LENGTH_SHORT).show();
+                Intent mIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://m.comic.naver.com/webtoon/list.nhn?titleId=679519&week=mon"));
+                startActivity(mIntent);
+            }
+        });
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -64,6 +84,8 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Intent set = new Intent(getApplicationContext(), SettingsActivity.class);
+            startActivity(set);
             return true;
         }
 
