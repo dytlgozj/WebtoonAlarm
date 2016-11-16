@@ -22,7 +22,14 @@
 ## Expected function
 
 * Save Webtoon Information that what you want to be noticed.
-* Webtoon page link on button what you saved
+* In main app, webtoon page link on button what you saved
 *  - The button has lasted date.
 * When webtoon release new cartoon, notice.
-* Notification can setted, vibration, bell, just notification.
+* Notification can be setted, vibration, bell, just notification.
+*  - If notification is clicked, move to webtoon page.
+
+## UI design target
+
+* Simple, and clear UI.
+* The eidtic flow of function.
+
