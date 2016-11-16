@@ -8,6 +8,7 @@
 * It will be Android Application.
 * This program License will follow MIT, this can change in progressing.
 * Actually, this app is notification app.
+* This app will be worked in 'Naver' webtoon first.
 
 ## Purpose
 
@@ -17,3 +18,11 @@
 
 * Java(Android)
 * XML
+
+## Expected function
+
+* Save Webtoon Information that what you want to be noticed.
+* Webtoon page link on button what you saved
+*  - The button has lasted date.
+* When webtoon release new cartoon, notice.
+* Notification can setted, vibration, bell, just notification.
