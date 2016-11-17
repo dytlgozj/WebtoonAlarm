@@ -33,7 +33,8 @@ import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
     Button button1;
-    ArrayList<webtoonInfor> db = new ArrayList<webtoonInfor>();
+    Button button2;
+    ArrayList<webtoonInfor> webtoon = new ArrayList<webtoonInfor>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +48,9 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setIcon(R.mipmap.ic_launcher2);
 
         button1 = (Button) findViewById(R.id.button1);
-        button1.setBackgroundColor(Color.WHITE);
+        button1.setBackgroundColor(Color.BLACK);
+        button1.setTextColor(Color.WHITE);
+
         button1.setOnClickListener(new View.OnClickListener(){
 
             @Override
@@ -55,6 +58,20 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "대학일기 페이지로 이동합니다.", Toast.LENGTH_SHORT).show();
                 Intent mIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://m.comic.naver.com/webtoon/list.nhn?titleId=679519&week=mon"));
                 startActivity(mIntent);
+            }
+        });
+
+        button2 = (Button) findViewById(R.id.button2);
+        button2.setBackgroundColor(Color.BLACK);
+        button2.setTextColor(Color.WHITE);
+
+        button2.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v){
+                Toast.makeText(getApplicationContext(), "가우스 전자 페이지로 이동합니다.", Toast.LENGTH_SHORT).show();
+                Intent mIntent2 = new Intent(Intent.ACTION_VIEW, Uri.parse("http://m.comic.naver.com/webtoon/list.nhn?titleId=675554&week=thu"));
+                startActivity(mIntent2);
             }
         });
 
