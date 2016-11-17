@@ -1,6 +1,6 @@
 public class MainActivity extends AppCompatActivity
 {
-	public static String defaultUrl = "http://m.naver.com";
+	public static String defaultUrl = "http://comic.naver.com/webtoon/weekday.nhn";
 	Handler handler = new Handler();
 
 	public void onCreate(Bundle savedInstanceState)
