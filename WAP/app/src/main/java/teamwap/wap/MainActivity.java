@@ -60,8 +60,8 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v){
-                Toast.makeText(getApplicationContext(), "대학일기 페이지로 이동합니다.", Toast.LENGTH_SHORT).show();
-                Intent mIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://m.comic.naver.com/webtoon/list.nhn?titleId=679519&week=mon"));
+                Toast.makeText(getApplicationContext(), "네이버 웹툰 페이지로 이동합니다.", Toast.LENGTH_SHORT).show();
+                Intent mIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://comic.naver.com/webtoon/weekday.nhn"));
                 startActivity(mIntent);
             }
         });
