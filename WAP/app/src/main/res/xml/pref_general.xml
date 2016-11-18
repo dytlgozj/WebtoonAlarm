@@ -11,7 +11,7 @@
     <EditTextPreference
         android:capitalize="words"
         android:defaultValue="@string/pref_default_display_name"
-        android:inputType="textCapWords"
+        android:inputType="textWebEditText"
         android:key="example_text"
         android:maxLines="1"
         android:selectAllOnFocus="true"
