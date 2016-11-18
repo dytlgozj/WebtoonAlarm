@@ -1,6 +1,7 @@
 package teamwap.wap;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.media.RingtoneManager;
 import android.net.Uri;
@@ -9,6 +10,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -26,6 +28,8 @@ import android.os.Bundle;
 import android.support.v7.app.NotificationCompat;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 import java.util.ArrayList;
 
@@ -34,6 +38,7 @@ import java.net.URL;
 public class MainActivity extends AppCompatActivity {
     Button button1;
     Button button2;
+
     ArrayList<webtoonInfor> webtoon = new ArrayList<webtoonInfor>();
 
     @Override
@@ -79,8 +84,34 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+
+                LinearLayout layout = new LinearLayout(MainActivity.this);
+                layout.setOrientation(LinearLayout.VERTICAL);
+
+                EditText etName = new EditText(MainActivity.this);
+                etName.setHint("웹툰 이름 입력");
+                EditText etURL = new EditText(MainActivity.this);
+                etURL.setHint("웹툰 URL 입력");
+
+                layout.addView(etName);
+                layout.addView(etURL);
+
+                AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
+                dialog  .setTitle("웹툰 추가")
+                        .setView(layout)
+                        .setPositiveButton("등록", new DialogInterface.OnClickListener(){
+                            @Override
+                            public void onClick(DialogInterface dialog, int which){
+
+                            }
+                        })
+                        .setNeutralButton("취소", new DialogInterface.OnClickListener(){
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        })
+                        .create().show();
             }
         });
     }
