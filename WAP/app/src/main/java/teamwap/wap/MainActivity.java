@@ -1,6 +1,8 @@
 package teamwap.wap;
 
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
@@ -17,9 +19,10 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
-public class MainActivity extends AppCompatActivity
-{
+public class MainActivity extends AppCompatActivity {
     Button button1;
     Button button2;
     int toonNum = 1;
@@ -27,8 +30,7 @@ public class MainActivity extends AppCompatActivity
     ArrayList<teamwap.wap.webtoonIn> webtoonInL = new ArrayList<teamwap.wap.webtoonIn>();
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -42,12 +44,12 @@ public class MainActivity extends AppCompatActivity
         button1.setBackgroundColor(Color.BLACK);
         button1.setTextColor(Color.WHITE);
 
-        button1.setOnClickListener(new View.OnClickListener() {
+        button1.setOnClickListener(new View.OnClickListener(){
 
             @Override
-            public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "네이버 웹툰 페이지로 이동합니다.", Toast.LENGTH_SHORT).show();
-                Intent mIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://comic.naver.com/webtoon/weekday.nhn"));
+            public void onClick(View v){
+                Toast.makeText(getApplicationContext(), "대학일기 페이지로 이동합니다.", Toast.LENGTH_SHORT).show();
+                Intent mIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://m.comic.naver.com/webtoon/list.nhn?titleId=679519&week=mon"));
                 startActivity(mIntent);
             }
         });
@@ -56,10 +58,10 @@ public class MainActivity extends AppCompatActivity
         button2.setBackgroundColor(Color.BLACK);
         button2.setTextColor(Color.WHITE);
 
-        button2.setOnClickListener(new View.OnClickListener() {
+        button2.setOnClickListener(new View.OnClickListener(){
 
             @Override
-            public void onClick(View v) {
+            public void onClick(View v){
                 Toast.makeText(getApplicationContext(), "가우스 전자 페이지로 이동합니다.", Toast.LENGTH_SHORT).show();
                 Intent mIntent2 = new Intent(Intent.ACTION_VIEW, Uri.parse("http://m.comic.naver.com/webtoon/list.nhn?titleId=675554&week=thu"));
                 startActivity(mIntent2);
@@ -83,24 +85,27 @@ public class MainActivity extends AppCompatActivity
                 layout.addView(etURL);
 
                 AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
-                dialog.setTitle("웹툰 추가")
+                dialog  .setTitle("웹툰 추가")
                         .setView(layout)
-                        .setPositiveButton("등록", new DialogInterface.OnClickListener() {
+                        .setPositiveButton("등록", new DialogInterface.OnClickListener(){
                             @Override
-                            public void onClick(DialogInterface dialog, int which) {
+                            public void onClick(DialogInterface dialog, int which){
                                 String name = etName.getText().toString();
                                 String url = etURL.getText().toString();
 
                                 webtoonIn webtoon = new webtoonIn(toonNum, name, url);
                                 toonNum++;
                                 webtoonInL.add(webtoon);
+                                // saveSharedPreferences_Data(getContext(), "webtoonIn", webtoonInL);
 
                                 Toast.makeText(getApplicationContext(), "등록되었습니다.", Toast.LENGTH_SHORT).show();
                             }
                         })
-                        .setNeutralButton("취소", new DialogInterface.OnClickListener() {
+                        .setNeutralButton("취소", new DialogInterface.OnClickListener(){
                             @Override
-                            public void onClick(DialogInterface dialog, int which) {}
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
                         })
                         .create().show();
             }
@@ -108,24 +113,43 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu)
-    {
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item)
-    {
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        if (id == R.id.action_settings)
-        {
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
             Intent set = new Intent(getApplicationContext(), SettingsActivity.class);
             startActivity(set);
             return true;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public static void saveSharedPreferences_Data(Context context, String key, ArrayList<String> dic) {
+
+        SharedPreferences pref = context.getSharedPreferences("webtInfor",0);
+        SharedPreferences.Editor edit = pref.edit();
+        Set<String> set = new HashSet<String>();
+        set.addAll(dic);
+        edit.putStringSet(key, set);
+        edit.commit();
+    }
+
+    public static ArrayList<String> loadSharedPreferencesData(Context context, String key) {
+
+        SharedPreferences pref = context.getSharedPreferences("webtInfor", Context.MODE_PRIVATE);
+        Set<String> set = pref.getStringSet(key, null);
+        return new ArrayList<String>(set);
     }
 }
