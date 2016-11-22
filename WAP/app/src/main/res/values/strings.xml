@@ -3,6 +3,7 @@
     <string name="action_settings">Settings</string>
     <string name="strBtn1">대학일기</string>
     <string name="strBtn2">가우스 전자</string>
+    <string name="strBtn3">Test</string>
     <string name="title_activity_settings">Settings</string>
     <string name="btnInsertURLData">Please Input Webtoon Information</string>
 

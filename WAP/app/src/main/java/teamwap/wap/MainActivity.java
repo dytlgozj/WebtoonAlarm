@@ -19,15 +19,16 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
+import java.io.*;
 
 public class MainActivity extends AppCompatActivity {
     Button button1;
     Button button2;
+    Button button3;
     int toonNum = 1;
 
     ArrayList<teamwap.wap.webtoonIn> webtoonInL = new ArrayList<teamwap.wap.webtoonIn>();
+    java.io.File f;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +69,33 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        button3 = (Button) findViewById(R.id.button3);
+        button3.setBackgroundColor(Color.BLACK);
+        button3.setTextColor(Color.WHITE);
+
+        button3.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v){
+                int i;
+
+                f = new java.io.File(getFilesDir(),"webtoonInfor.dat");
+
+                try {
+                    ObjectInputStream ois = new ObjectInputStream(new FileInputStream(f));
+                    ArrayList list = ois.readObject();
+
+                    for (i=0; i < list.size(); i++){
+                        webtoonInL.add(list.get(i));
+                    }
+
+                }catch(IOException ioe){
+                }
+
+                Toast.makeText(getApplicationContext(), webtoonInL.get(0).get_name(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,7 +124,13 @@ public class MainActivity extends AppCompatActivity {
                                 webtoonIn webtoon = new webtoonIn(toonNum, name, url);
                                 toonNum++;
                                 webtoonInL.add(webtoon);
-                                // saveSharedPreferences_Data(getContext(), "webtoonIn", webtoonInL);
+
+                                f = new java.io.File(getFilesDir(),"webtoonInfor.dat");
+                                try {
+                                    java.io.ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(f));
+                                    oos.writeObject(webtoonInL);
+                                }catch(IOException ioe){
+                                }
 
                                 Toast.makeText(getApplicationContext(), "등록되었습니다.", Toast.LENGTH_SHORT).show();
                             }
@@ -134,20 +168,7 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public static void saveSharedPreferences_Data(Context context, String key, ArrayList<String> dic) {
+    public void addButton(){
 
-        SharedPreferences pref = context.getSharedPreferences("webtInfor",0);
-        SharedPreferences.Editor edit = pref.edit();
-        Set<String> set = new HashSet<String>();
-        set.addAll(dic);
-        edit.putStringSet(key, set);
-        edit.commit();
-    }
-
-    public static ArrayList<String> loadSharedPreferencesData(Context context, String key) {
-
-        SharedPreferences pref = context.getSharedPreferences("webtInfor", Context.MODE_PRIVATE);
-        Set<String> set = pref.getStringSet(key, null);
-        return new ArrayList<String>(set);
     }
 }
