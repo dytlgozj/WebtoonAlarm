@@ -33,6 +33,18 @@
         android:textColorLink="?attr/colorBackgroundFloating"
         android:textColor="@android:color/background_light" />
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginBottom="1dp"
+        android:layout_marginTop="1dp"
+        android:id="@+id/button3"
+        android:text="TEST"
+        android:background="@android:drawable/screen_background_dark"
+        style="@style/Widget.AppCompat.ImageButton"
+        android:textColorLink="?attr/colorBackgroundFloating"
+        android:textColor="@android:color/background_light" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
