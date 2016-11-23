@@ -6,9 +6,10 @@
 
 * WAP is, Webtoon Alarm Program, be used webtoon alram.
 * It will be Android Application.
-* This program License will follow MIT, this can change in progressing.
-* Actually, this app is notification app.
-* This app will be worked in Naver Webtoon first.
+* This Application Program License will follow MIT.
+* This app is Webtoon notification app.
+* This app will be worked in Naver Webtoon at first.
+* Of course, this application will making with Android Studio.
 
 ## Purpose
 
