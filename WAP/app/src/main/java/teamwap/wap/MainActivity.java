@@ -11,6 +11,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -73,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
         button3.setBackgroundColor(Color.BLACK);
         button3.setTextColor(Color.WHITE);
 
-        button3.setOnClickListener(new View.OnClickListener(){
+        /**button3.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View v){
@@ -94,7 +95,9 @@ public class MainActivity extends AppCompatActivity {
 
                 Toast.makeText(getApplicationContext(), webtoonInL.get(0).get_name(), Toast.LENGTH_SHORT).show();*/
             }
-        });
+        });*/
+
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
