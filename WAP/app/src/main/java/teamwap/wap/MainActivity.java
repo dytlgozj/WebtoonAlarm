@@ -1,5 +1,6 @@
 package teamwap.wap;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
@@ -25,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
     Button button1;
     Button button2;
     Button button3;
-    int toonNum = 1;
 
     ArrayList<teamwap.wap.webtoonIn> webtoonInL = new ArrayList<teamwap.wap.webtoonIn>();
     java.io.File f;
@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v){
-                int i;
+                /**int i;
 
                 f = new java.io.File(getFilesDir(),"webtoonInfor.dat");
 
@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
                 }catch(IOException ioe){
                 }
 
-                Toast.makeText(getApplicationContext(), webtoonInL.get(0).get_name(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), webtoonInL.get(0).get_name(), Toast.LENGTH_SHORT).show();*/
             }
         });
 
@@ -121,8 +121,7 @@ public class MainActivity extends AppCompatActivity {
                                 String name = etName.getText().toString();
                                 String url = etURL.getText().toString();
 
-                                webtoonIn webtoon = new webtoonIn(toonNum, name, url);
-                                toonNum++;
+                                webtoonIn webtoon = new webtoonIn(name, url);
                                 webtoonInL.add(webtoon);
 
                                 f = new java.io.File(getFilesDir(),"webtoonInfor.dat");
@@ -136,6 +135,54 @@ public class MainActivity extends AppCompatActivity {
                             }
                         })
                         .setNeutralButton("취소", new DialogInterface.OnClickListener(){
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {}
+                        })
+                        .create().show();
+            }
+        });
+
+        FloatingActionButton fab2 = (FloatingActionButton) findViewById(R.id.fab2);
+        fab2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view){
+
+                LinearLayout layout = new LinearLayout(MainActivity.this);
+                layout.setOrientation(LinearLayout.VERTICAL);
+
+                final EditText etName = new EditText(MainActivity.this);
+                etName.setHint("웹툰 이름 입력");
+
+                layout.addView(etName);
+
+                AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
+                dialog  .setTitle("웹툰 삭제")
+                        .setView(layout)
+                        .setPositiveButton("확인", new DialogInterface.OnClickListener(){
+                            @Override
+                            public void onClick(DialogInterface dialog, int which){
+                                int i;
+                                String srname = etName.getText().toString();
+
+                                for (i=0; i < webtoonInL.size(); i++){
+                                    webtoonIn search = webtoonInL.get(i);
+                                    String name = search.get_name();
+
+                                    if (name.equals(srname)){
+                                        webtoonInL.remove(i);
+                                    }
+
+                                    f = new java.io.File(getFilesDir(),"webtoonInfor.dat");
+                                    try {
+                                        java.io.ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(f));
+                                        oos.writeObject(webtoonInL);
+                                    }catch(IOException ioe){
+                                    }
+                                }
+                                Toast.makeText(getApplicationContext(), "삭제되었습니다.", Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                        .setNegativeButton("취소", new DialogInterface.OnClickListener(){
                             @Override
                             public void onClick(DialogInterface dialog, int which) {}
                         })
@@ -166,9 +213,5 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    public void addButton(){
-
     }
 }
