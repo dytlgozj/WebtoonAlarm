@@ -12,12 +12,14 @@
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
 
+        <!--
         <TextView
             android:text="웹툰알리미 - WAP 프로젝트"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/textView"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+        -->
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
@@ -40,5 +42,17 @@
         app:srcCompat="@android:drawable/ic_input_add"
         app:backgroundTint="?attr/actionMenuTextColor"
         app:fabSize="mini" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|right"
+        android:layout_margin="@dimen/fab_margin"
+        app:srcCompat="@android:drawable/button_onoff_indicator_on"
+        app:backgroundTint="?attr/actionMenuTextColor"
+        app:fabSize="mini"
+        app:layout_anchor="@+id/include"
+        app:layout_anchorGravity="bottom|left" />
 
 </android.support.design.widget.CoordinatorLayout>

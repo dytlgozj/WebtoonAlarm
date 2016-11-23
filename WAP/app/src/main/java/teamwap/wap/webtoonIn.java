@@ -6,23 +6,12 @@ package teamwap.wap;
 
 public class webtoonIn {
 
-    private int _id;
-
     String name;
     String url;
 
-    public webtoonIn(int _id, String name, String url){
-        this._id = _id;
+    public webtoonIn(String name, String url){
         this.name = name;
         this.url = url;
-    }
-
-    public int get_id(){
-        return _id;
-    }
-
-    public void set_id(){
-        this._id = _id;
     }
 
     public String get_name(){
