@@ -93,11 +93,9 @@ public class MainActivity extends AppCompatActivity {
                 }catch(IOException ioe){
                 }
 
-                Toast.makeText(getApplicationContext(), webtoonInL.get(0).get_name(), Toast.LENGTH_SHORT).show();*/
+                Toast.makeText(getApplicationContext(), webtoonInL.get(0).get_name(), Toast.LENGTH_SHORT).show();
             }
         });*/
-
-
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
