@@ -7,6 +7,7 @@ package teamwap.testnof;
 import android.app.Activity;
 import android.app.NotificationManager;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -16,6 +17,10 @@ public class NotificationSomething extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.notification_something);
         CharSequence s = "전달 받은 값은 ";
+
+        Intent main = new Intent(getApplicationContext(), MainActivity.class); // 클릭하면 메인으로 가도록 설정하는 코드.
+        startActivity(main);
+
         int id=0;
 
         Bundle extras = getIntent().getExtras();
