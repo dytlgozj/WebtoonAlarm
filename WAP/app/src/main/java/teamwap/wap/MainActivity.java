@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
@@ -30,16 +31,24 @@ import android.graphics.BitmapFactory;
 import android.support.v7.app.NotificationCompat;
 import android.app.Activity;
 
+import com.google.android.gms.appindexing.Action;
+import com.google.android.gms.appindexing.AppIndex;
+import com.google.android.gms.appindexing.Thing;
+import com.google.android.gms.common.api.GoogleApiClient;
 
 
 public class MainActivity extends AppCompatActivity {
     Button button1;
     Button button2;
-    Button button3;
     Button button4;
 
-    ArrayList<teamwap.wap.webtoonIn> webtoonInL = new ArrayList<teamwap.wap.webtoonIn>();
-    java.io.File f;
+    ArrayList<webtoonIn> webtoonInL = new ArrayList<webtoonIn>();
+    File f;
+    /**
+     * ATTENTION: This was auto-generated to implement the App Indexing API.
+     * See https://g.co/AppIndexing/AndroidStudio for more information.
+     */
+    private GoogleApiClient client;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,10 +65,10 @@ public class MainActivity extends AppCompatActivity {
         button1.setBackgroundColor(Color.BLACK);
         button1.setTextColor(Color.WHITE);
 
-        button1.setOnClickListener(new View.OnClickListener(){
+        button1.setOnClickListener(new View.OnClickListener() {
 
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), "네이버 웹툰 페이지로 이동합니다.", Toast.LENGTH_SHORT).show();
                 Intent mIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://comic.naver.com/webtoon/weekday.nhn"));
                 startActivity(mIntent);
@@ -70,19 +79,15 @@ public class MainActivity extends AppCompatActivity {
         button2.setBackgroundColor(Color.BLACK);
         button2.setTextColor(Color.WHITE);
 
-        button2.setOnClickListener(new View.OnClickListener(){
+        button2.setOnClickListener(new View.OnClickListener() {
 
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), "가우스 전자 페이지로 이동합니다.", Toast.LENGTH_SHORT).show();
                 Intent mIntent2 = new Intent(Intent.ACTION_VIEW, Uri.parse("http://m.comic.naver.com/webtoon/list.nhn?titleId=675554&week=thu"));
                 startActivity(mIntent2);
             }
         });
-
-        button3 = (Button) findViewById(R.id.button3);
-        button3.setBackgroundColor(Color.BLACK);
-        button3.setTextColor(Color.WHITE);
 
 
         /* 이 불러오는 테스트용 버튼은 자바 콜렉션 오류만 수정하면 바로 사용가능.
@@ -90,25 +95,24 @@ public class MainActivity extends AppCompatActivity {
          */
         /**button3.setOnClickListener(new View.OnClickListener(){
 
-            @Override
-            public void onClick(View v){
-                int i;
+        @Override public void onClick(View v){
+        int i;
 
-                f = new java.io.File(getFilesDir(),"webtoonInfor.dat");
+        f = new java.io.File(getFilesDir(),"webtoonInfor.dat");
 
-                try {
-                    ObjectInputStream ois = new ObjectInputStream(new FileInputStream(f));
-                    ArrayList list = ois.readObject();
+        try {
+        ObjectInputStream ois = new ObjectInputStream(new FileInputStream(f));
+        ArrayList list = ois.readObject();
 
-                    for (i=0; i < list.size(); i++){
-                        webtoonInL.add(list.get(i));
-                    }
+        for (i=0; i < list.size(); i++){
+        webtoonInL.add(list.get(i));
+        }
 
-                }catch(IOException ioe){
-                }
+        }catch(IOException ioe){
+        }
 
-                Toast.makeText(getApplicationContext(), webtoonInL.get(0).get_name(), Toast.LENGTH_SHORT).show();
-            }
+        Toast.makeText(getApplicationContext(), webtoonInL.get(0).get_name(), Toast.LENGTH_SHORT).show();
+        }
         });*/
 
         /* 지금은 테스트 버튼이지만 새롭게 웹툰이 올라오면 NotificationSomethings 함수 호출하도록 수정하면 됨 */
@@ -116,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
         button4.setBackgroundColor(Color.BLACK);
         button4.setTextColor(Color.WHITE);
 
-        button4.setOnClickListener(new View.OnClickListener(){
+        button4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 NotificationSomethings();
@@ -140,30 +144,31 @@ public class MainActivity extends AppCompatActivity {
                 layout.addView(etURL);
 
                 AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
-                dialog  .setTitle("웹툰 추가")
+                dialog.setTitle("웹툰 추가")
                         .setView(layout)
-                        .setPositiveButton("등록", new DialogInterface.OnClickListener(){
+                        .setPositiveButton("등록", new DialogInterface.OnClickListener() {
                             @Override
-                            public void onClick(DialogInterface dialog, int which){
+                            public void onClick(DialogInterface dialog, int which) {
                                 String name = etName.getText().toString();
                                 String url = etURL.getText().toString();
 
                                 webtoonIn webtoon = new webtoonIn(name, url);
                                 webtoonInL.add(webtoon);
 
-                                f = new java.io.File(getFilesDir(),"webtoonInfor.dat");
+                                f = new File(getFilesDir(), "webtoonInfor.dat");
                                 try {
-                                    java.io.ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(f));
+                                    ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(f));
                                     oos.writeObject(webtoonInL);
-                                }catch(IOException ioe){
+                                } catch (IOException ioe) {
                                 }
 
                                 Toast.makeText(getApplicationContext(), "등록되었습니다.", Toast.LENGTH_SHORT).show();
                             }
                         })
-                        .setNeutralButton("취소", new DialogInterface.OnClickListener(){
+                        .setNeutralButton("취소", new DialogInterface.OnClickListener() {
                             @Override
-                            public void onClick(DialogInterface dialog, int which) {}
+                            public void onClick(DialogInterface dialog, int which) {
+                            }
                         })
                         .create().show();
             }
@@ -172,7 +177,7 @@ public class MainActivity extends AppCompatActivity {
         FloatingActionButton fab2 = (FloatingActionButton) findViewById(R.id.fab2);
         fab2.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view){
+            public void onClick(View view) {
 
                 LinearLayout layout = new LinearLayout(MainActivity.this);
                 layout.setOrientation(LinearLayout.VERTICAL);
@@ -183,39 +188,44 @@ public class MainActivity extends AppCompatActivity {
                 layout.addView(etName);
 
                 AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
-                dialog  .setTitle("웹툰 삭제")
+                dialog.setTitle("웹툰 삭제")
                         .setView(layout)
-                        .setPositiveButton("확인", new DialogInterface.OnClickListener(){
+                        .setPositiveButton("확인", new DialogInterface.OnClickListener() {
                             @Override
-                            public void onClick(DialogInterface dialog, int which){
+                            public void onClick(DialogInterface dialog, int which) {
                                 int i;
                                 String srname = etName.getText().toString();
 
-                                for (i=0; i < webtoonInL.size(); i++){
+                                for (i = 0; i < webtoonInL.size(); i++) {
                                     webtoonIn search = webtoonInL.get(i);
                                     String name = search.get_name();
 
-                                    if (name.equals(srname)){
+                                    if (name.equals(srname)) {
                                         webtoonInL.remove(i);
                                     }
 
-                                    f = new java.io.File(getFilesDir(),"webtoonInfor.dat");
+                                    f = new File(getFilesDir(), "webtoonInfor.dat");
                                     try {
-                                        java.io.ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(f));
+                                        ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(f));
                                         oos.writeObject(webtoonInL);
-                                    }catch(IOException ioe){
+                                    } catch (IOException ioe) {
                                     }
                                 }
                                 Toast.makeText(getApplicationContext(), "삭제되었습니다.", Toast.LENGTH_SHORT).show();
                             }
                         })
-                        .setNegativeButton("취소", new DialogInterface.OnClickListener(){
+                        .setNegativeButton("취소", new DialogInterface.OnClickListener() {
                             @Override
-                            public void onClick(DialogInterface dialog, int which) {}
+                            public void onClick(DialogInterface dialog, int which) {
+                            }
                         })
                         .create().show();
             }
         });
+        getSupportActionBar().setIcon(R.mipmap.ic_launcher);
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
     @Override
@@ -255,14 +265,14 @@ public class MainActivity extends AppCompatActivity {
         builder.setContentTitle("새로운 웹툰이 올라왔습니다.")
                 .setContentText("지금 눌러 확인하세요!")
                 .setTicker("상태바 메시지 수정은 여기")
-                .setSmallIcon(R.mipmap.ic_launcher)
-                .setLargeIcon(BitmapFactory.decodeResource(res, R.mipmap.ic_launcher))
+                .setSmallIcon(R.mipmap.ic_launcher2)
+                .setLargeIcon(BitmapFactory.decodeResource(res, R.mipmap.ic_launcher2))
                 .setContentIntent(contentIntent)
                 .setAutoCancel(true)
                 .setWhen(System.currentTimeMillis())
                 .setDefaults(Notification.DEFAULT_ALL);
 
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             builder.setCategory(Notification.CATEGORY_MESSAGE)
                     .setPriority(Notification.PRIORITY_HIGH)
                     .setVisibility(Notification.VISIBILITY_PUBLIC);
@@ -270,5 +280,41 @@ public class MainActivity extends AppCompatActivity {
 
         NotificationManager nm = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         nm.notify(1234, builder.build());
+    }
+
+    /**
+     * ATTENTION: This was auto-generated to implement the App Indexing API.
+     * See https://g.co/AppIndexing/AndroidStudio for more information.
+     */
+    public Action getIndexApiAction() {
+        Thing object = new Thing.Builder()
+                .setName("Main Page") // TODO: Define a title for the content shown.
+                // TODO: Make sure this auto-generated URL is correct.
+                .setUrl(Uri.parse("http://[ENTER-YOUR-URL-HERE]"))
+                .build();
+        return new Action.Builder(Action.TYPE_VIEW)
+                .setObject(object)
+                .setActionStatus(Action.STATUS_TYPE_COMPLETED)
+                .build();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        client.connect();
+        AppIndex.AppIndexApi.start(client, getIndexApiAction());
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        AppIndex.AppIndexApi.end(client, getIndexApiAction());
+        client.disconnect();
     }
 }
