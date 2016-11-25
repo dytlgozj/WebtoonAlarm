@@ -4,6 +4,7 @@
     <string name="strBtn1">네이버웹툰</string>
     <string name="strBtn2">가우스 전자</string>
     <string name="strBtn3">Test</string>
+    <string name="strBtn4">알림 테스트 버튼</string>
     <string name="title_activity_settings">Settings</string>
     <string name="btnInsertURLData">Please Input Webtoon Information</string>
 

@@ -1,7 +1,7 @@
-package teamwap.testnof;
+package teamwap.wap;
 
 /**
- * Created by Tabi on 2016-11-24.
+ * Created by Tabi on 2016-11-25.
  */
 
 import android.app.Activity;
@@ -38,5 +38,4 @@ public class NotificationSomething extends Activity {
         //노티피케이션 제거
         nm.cancel(id);
     }
-
 }

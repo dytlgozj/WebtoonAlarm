@@ -22,11 +22,21 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 import java.util.ArrayList;
 import java.io.*;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.res.Resources;
+import android.graphics.BitmapFactory;
+import android.support.v7.app.NotificationCompat;
+import android.app.Activity;
+
+
 
 public class MainActivity extends AppCompatActivity {
     Button button1;
     Button button2;
     Button button3;
+    Button button4;
 
     ArrayList<teamwap.wap.webtoonIn> webtoonInL = new ArrayList<teamwap.wap.webtoonIn>();
     java.io.File f;
@@ -74,11 +84,15 @@ public class MainActivity extends AppCompatActivity {
         button3.setBackgroundColor(Color.BLACK);
         button3.setTextColor(Color.WHITE);
 
+
+        /* 이 불러오는 테스트용 버튼은 자바 콜렉션 오류만 수정하면 바로 사용가능.
+            나중에 버튼 대신에 입력받으면 연결하는 방식으로 넣으면 됨.
+         */
         /**button3.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View v){
-                /**int i;
+                int i;
 
                 f = new java.io.File(getFilesDir(),"webtoonInfor.dat");
 
@@ -96,6 +110,18 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), webtoonInL.get(0).get_name(), Toast.LENGTH_SHORT).show();
             }
         });*/
+
+        /* 지금은 테스트 버튼이지만 새롭게 올라오면 NotificationSomethings 함수 호출하도록 수정하면 됨 */
+        button4 = (Button) findViewById(R.id.button4);
+        button4.setBackgroundColor(Color.BLACK);
+        button4.setTextColor(Color.WHITE);
+
+        button4.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                NotificationSomethings();
+            }
+        });
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -214,5 +240,35 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void NotificationSomethings() {
+
+        Resources res = getResources();
+
+        Intent notificationIntent = new Intent(this, NotificationSomething.class);
+        notificationIntent.putExtra("notificationId", 9999); //전달할 값
+        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
+
+        builder.setContentTitle("새로운 웹툰이 올라왔습니다.")
+                .setContentText("지금 눌러 확인하세요!")
+                .setTicker("상태바 메시지 수정은 여기")
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .setLargeIcon(BitmapFactory.decodeResource(res, R.mipmap.ic_launcher))
+                .setContentIntent(contentIntent)
+                .setAutoCancel(true)
+                .setWhen(System.currentTimeMillis())
+                .setDefaults(Notification.DEFAULT_ALL);
+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP){
+            builder.setCategory(Notification.CATEGORY_MESSAGE)
+                    .setPriority(Notification.PRIORITY_HIGH)
+                    .setVisibility(Notification.VISIBILITY_PUBLIC);
+        }
+
+        NotificationManager nm = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        nm.notify(1234, builder.build());
     }
 }
