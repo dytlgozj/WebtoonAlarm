@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });*/
 
-        /* 지금은 테스트 버튼이지만 새롭게 올라오면 NotificationSomethings 함수 호출하도록 수정하면 됨 */
+        /* 지금은 테스트 버튼이지만 새롭게 웹툰이 올라오면 NotificationSomethings 함수 호출하도록 수정하면 됨 */
         button4 = (Button) findViewById(R.id.button4);
         button4.setBackgroundColor(Color.BLACK);
         button4.setTextColor(Color.WHITE);
