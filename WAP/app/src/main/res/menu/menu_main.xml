@@ -5,6 +5,6 @@
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
-        android:title="Notification Settings..."
+        android:title="환경 설정"
         app:showAsAction="never" />
 </menu>
