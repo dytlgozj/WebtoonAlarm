@@ -1,9 +1,7 @@
 package teamwap.wap;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
@@ -12,7 +10,6 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Gravity;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -29,7 +26,6 @@ import android.app.PendingIntent;
 import android.content.res.Resources;
 import android.graphics.BitmapFactory;
 import android.support.v7.app.NotificationCompat;
-import android.app.Activity;
 
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
@@ -40,7 +36,7 @@ import com.google.android.gms.common.api.GoogleApiClient;
 public class MainActivity extends AppCompatActivity {
     Button button1;
     Button button2;
-    Button button4;
+    Button button3;
 
     ArrayList<webtoonIn> webtoonInL = new ArrayList<webtoonIn>();
     File f;
@@ -116,11 +112,11 @@ public class MainActivity extends AppCompatActivity {
         });*/
 
         /* 지금은 테스트 버튼이지만 새롭게 웹툰이 올라오면 NotificationSomethings 함수 호출하도록 수정하면 됨 */
-        button4 = (Button) findViewById(R.id.button4);
-        button4.setBackgroundColor(Color.BLACK);
-        button4.setTextColor(Color.WHITE);
+        button3 = (Button) findViewById(R.id.button3);
+        button3.setBackgroundColor(Color.BLACK);
+        button3.setTextColor(Color.WHITE);
 
-        button4.setOnClickListener(new View.OnClickListener() {
+        button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 NotificationSomethings();
@@ -282,14 +278,9 @@ public class MainActivity extends AppCompatActivity {
         nm.notify(1234, builder.build());
     }
 
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
     public Action getIndexApiAction() {
         Thing object = new Thing.Builder()
-                .setName("Main Page") // TODO: Define a title for the content shown.
-                // TODO: Make sure this auto-generated URL is correct.
+                .setName("Main Page")
                 .setUrl(Uri.parse("http://[ENTER-YOUR-URL-HERE]"))
                 .build();
         return new Action.Builder(Action.TYPE_VIEW)

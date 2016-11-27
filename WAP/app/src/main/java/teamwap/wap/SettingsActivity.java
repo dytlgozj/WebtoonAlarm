@@ -19,11 +19,9 @@ import android.preference.PreferenceManager;
 import android.preference.RingtonePreference;
 import android.text.TextUtils;
 import android.view.MenuItem;
-import android.widget.Button;
 
 import java.util.List;
 
-import static android.R.attr.id;
 
 /**
  * A {@link PreferenceActivity} that presents a set of application settings. On
