@@ -19,8 +19,6 @@ import android.preference.PreferenceManager;
 import android.preference.RingtonePreference;
 import android.text.TextUtils;
 import android.view.MenuItem;
-import android.app.Activity;
-import android.widget.Toast;
 
 import java.util.List;
 
