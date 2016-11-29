@@ -6,7 +6,6 @@
     <string name="strBtn3">Test</string>
     <string name="strBtn4">알림 테스트 버튼</string>
     <string name="title_activity_settings">환경 설정</string>
-    <string name="btnInsertURLData">Please Input Webtoon Information</string>
 
     <!-- Strings related to Settings -->
 
@@ -34,9 +33,9 @@
     </string-array>
 
     <!-- Example settings for Data & Sync -->
-    <string name="pref_header_data_sync">데이터 동조 설정</string>
+    <string name="pref_header_data_sync">데이터 설정</string>
 
-    <string name="pref_title_sync_frequency">데이터 동조 주기 설정</string>
+    <string name="pref_title_sync_frequency">데이터 갱신 주기 설정</string>
     <string-array name="pref_sync_frequency_titles">
         <item>15 분</item>
         <item>30 분</item>
@@ -73,7 +72,7 @@
     <!-- Example settings for Notifications -->
     <string name="pref_header_notifications">알림 설정</string>
 
-    <string name="pref_title_new_message_notifications">알림을 받겠습니까?</string>
+    <string name="pref_title_new_message_notifications">알림을 받겠습니까</string>
 
     <string name="pref_title_ringtone">벨소리 설정</string>
     <string name="pref_ringtone_silent">무음</string>
