@@ -36,6 +36,20 @@ import static android.R.attr.id;
  * API Guide</a> for more information on developing a Settings UI.
  */
 public class SettingsActivity extends AppCompatPreferenceActivity {
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()){
+            case android.R.id.home:{
+                finish();
+                break;
+            }
+            default:{
+                break;
+            }
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     /**
      * A preference value change listener that updates the preference's summary
      * to reflect its new value.
@@ -165,7 +179,8 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
         return PreferenceFragment.class.getName().equals(fragmentName)
                 || GeneralPreferenceFragment.class.getName().equals(fragmentName)
                 || DataSyncPreferenceFragment.class.getName().equals(fragmentName)
-                || NotificationPreferenceFragment.class.getName().equals(fragmentName);
+                || NotificationPreferenceFragment.class.getName().equals(fragmentName)
+                || AppDataPreferenceFragment.class.getName().equals(fragmentName);
     }
 
     /**
