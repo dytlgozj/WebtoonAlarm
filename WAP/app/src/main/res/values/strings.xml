@@ -85,5 +85,9 @@
 
     <string name="pref_title_app_data">앱 정보</string>
 
-    <string name="pref_title_del_Infor">개발자 정보</string>
+    <string name="pref_title_app_del_Infor">개발자 정보</string>
+
+    <string name="pref_title_app_License">라이센스 정보</string>
+
+    <string name="pref_title_app_git">Github</string>
 </resources>
