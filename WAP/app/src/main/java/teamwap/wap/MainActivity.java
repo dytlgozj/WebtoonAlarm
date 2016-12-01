@@ -258,7 +258,7 @@ public class MainActivity extends AppCompatActivity {
 
         builder.setContentTitle("새로운 웹툰이 올라왔습니다.")
                 .setContentText("지금 눌러 확인하세요!")
-                .setTicker("상태바 메시지 수정은 여기")
+                .setTicker("상태바 메시지 수정은 여기입니다.")
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .setLargeIcon(BitmapFactory.decodeResource(res, R.mipmap.ic_launcher))
                 .setContentIntent(contentIntent)
