@@ -135,8 +135,6 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
         super.onCreate(savedInstanceState);
         setupActionBar();
 
-        // SettingsActivity 메인 체크.
-
     }
 
     /**
