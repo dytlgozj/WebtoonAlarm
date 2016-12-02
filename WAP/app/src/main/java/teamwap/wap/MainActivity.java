@@ -18,8 +18,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+
+import java.text.DateFormat;
 import java.util.ArrayList;
 import java.io.*;
+import java.util.Date;
+
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -31,6 +35,8 @@ import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.appindexing.Thing;
 import com.google.android.gms.common.api.GoogleApiClient;
+
+import static teamwap.wap.R.id.textView;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -312,4 +318,12 @@ public class MainActivity extends AppCompatActivity {
     public void onBackPressed() {
         backPressCloseHandler.onBackPressed();
     }
+
+    /**
+     * 이 코드는 텍스트뷰에 현재 시간과 날짜를 출력하는 코드인데 수정하면 버튼에 날짜가 뜨도록 설정할 수 있을것 */
+    /*
+     String currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
+
+     //텍스트뷰에 현재 시간과 날짜를 출력
+     textView.setText(currentDateTimeString); */
 }
