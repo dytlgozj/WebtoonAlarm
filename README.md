@@ -9,7 +9,6 @@
 * This Application Program License will follow MIT.
 * This app is Webtoon notification app.
 * This app will be worked in Naver Webtoon at first.
-* Of course, this application will making with Android Studio.
 
 ## Purpose
 
@@ -27,10 +26,13 @@
 *  - The button has lasted date and webtoon name. (webtoon information)
 * When webtoon release new cartoon, notice.
 * Notification can be setted : vibration, bell, and just notification.
-*  - If notification is clicked, move to webtoon page.  
-* It may not be completed within the deadline. if then, anyone of you who is interested in this project can be part of contributor.  
+*  - If notification is clicked, move to webtoon page.    
 
 ## UI design target
 
 * Simple, and clear UI.
 * The eidtic flow of function.
+
+## ECT
+
+* It may not be completed within the daedline.
