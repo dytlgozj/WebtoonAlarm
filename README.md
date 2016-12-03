@@ -25,7 +25,7 @@
 * In main app, webtoon page link on button what you saved
 *  - The button has lasted date and webtoon name. (webtoon information)
 * When webtoon release new cartoon, notice.
-* Notification can be setted : vibration, bell, and just notification.
+* Notification can be set : vibration, bell, and just notification.
 *  - If notification is clicked, move to webtoon page.    
 
 ## UI design target
@@ -33,6 +33,6 @@
 * Simple, and clear UI.
 * The eidtic flow of function.
 
-## ECT
+## ETC
 
-* It may not be completed within the daedline.
+* It may not be completed within the deadline.
