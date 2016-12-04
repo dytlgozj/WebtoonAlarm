@@ -4,13 +4,15 @@
         android:key="app_data"
         android:summary="@string/pref_title_app_del_Infor"
         android:title="@string/pref_title_app_del_Infor">
+        <intent android:action="android.intent.action.VIEW"
+                android:data="https://github.com/dytlgozj/WebtoonAlarm/wiki"></intent>
     </Preference>
 
     <Preference
         android:key="app_data"
         android:title="@string/pref_title_app_License">
-        <intent android:action="android.intent.action.MAIN"
-                android:targetClass=".LicenseView"></intent>
+        <intent android:action="android.intent.action.VIEW"
+                android:data="https://en.wikipedia.org/wiki/MIT_License"></intent>
     </Preference>
 
     <Preference
