@@ -16,7 +16,7 @@
 
 ## Used Language
 
-* Java(Android)
+* Java
 * XML
 
 ## Expected function
