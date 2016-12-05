@@ -4,10 +4,10 @@
 
 ## Webtoon Alarm Project
 
-* WAP is, Webtoon Alarm Program, be used webtoon alram.
-* It will be Android Application.
+* WAP is Webtoon Alarm Program for used webtoon alarm.
+* It is Android Application.
 * This Application Program License will follow MIT.
-* This app is Webtoon notification app.
+* This app is notification app.
 * This app will be worked in Naver Webtoon at first.
 
 ## Purpose
@@ -18,6 +18,11 @@
 
 * Java
 * XML
+
+## Project development tool
+
+* Android Studio
+* Github
 
 ## Expected function
 
@@ -35,4 +40,4 @@
 
 ## ETC
 
-* It may not be completed within the deadline.
+* It may not be completed within the deadline. If there is anyone who can help us, please help us because we are stuck.
