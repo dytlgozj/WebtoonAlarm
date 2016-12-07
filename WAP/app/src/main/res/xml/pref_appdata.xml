@@ -11,8 +11,9 @@
     <Preference
         android:key="app_data"
         android:title="@string/pref_title_app_License">
-        <intent android:action="android.intent.action.VIEW"
-                android:data="https://en.wikipedia.org/wiki/MIT_License"></intent>
+        <!--<intent android:action="android.intent.action.VIEW"
+                android:data="https://en.wikipedia.org/wiki/MIT_License"></intent>-->
+        <intent android:action="android.intent.action.Lincense"></intent>
     </Preference>
 
     <Preference
