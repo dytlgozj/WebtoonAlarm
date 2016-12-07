@@ -160,6 +160,7 @@ public class MainActivity extends AppCompatActivity {
                                     ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(f));
                                     oos.writeObject(webtoonInL);
                                 } catch (IOException ioe) {
+                                    ioe.printStackTrace();
                                 }
 
                                 Toast.makeText(getApplicationContext(), "등록되었습니다.", Toast.LENGTH_SHORT).show();
