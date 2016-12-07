@@ -29,15 +29,19 @@
             android:label="@string/title_activity_settings" />
         <activity android:name=".NotificationSomething"></activity><!-- ATTENTION: This was auto-generated to add Google Play services to your project for
      App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
+        <activity android:name=".License"
+            android:label="@string/title_activity_settings">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.Lincense" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-        <activity android:label="@string/action_license" android:name=".LicenseView">
-            <intent-filter>
-                <action android:name=".LicenseVIew"></action>
-            </intent-filter>
-        </activity>
+
     </application>
 
 </manifest>
