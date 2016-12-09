@@ -327,5 +327,6 @@ public class MainActivity extends AppCompatActivity {
      String currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
 
      //텍스트뷰에 현재 시간과 날짜를 출력
+     // 버튼에 입력이 되도록 수정할 필요가 있음.
      textView.setText(currentDateTimeString); */
 }
