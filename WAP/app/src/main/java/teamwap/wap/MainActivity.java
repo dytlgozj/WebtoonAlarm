@@ -322,7 +322,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * 이 코드는 텍스트뷰에 현재 시간과 날짜를 출력하는 코드인데 수정하면 버튼에 날짜가 뜨도록 설정할 수 있을것 */
+     *텍스트뷰에 현재 시간과 날짜를 출력하는 코드*/
     /*
      String currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
 
