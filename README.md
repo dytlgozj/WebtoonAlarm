@@ -6,9 +6,12 @@
 
 * WAP is Webtoon Alarm Program for used webtoon alarm.
 * It is Android Application.
-* This Application Program License will follow MIT.
-* This app is notification app.
-* This app will be worked in Naver Webtoon at first.
+* This app contains notification function.
+* This app will be worked in Naver Webtoon at first trial test.
+
+## Open Source License
+
+* MIT License
 
 ## Purpose
 
@@ -38,6 +41,7 @@
 * Simple, and clear UI.
 * The eidtic flow of function.
 
-## ETC
+## What we want to tester
 
 * It may not be completed within the deadline. If there is anyone who can help us, please help us because we are stuck.
+* If you want to commit our open source software or any advice, Our door is always Open!
