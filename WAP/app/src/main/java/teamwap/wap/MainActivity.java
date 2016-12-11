@@ -91,8 +91,9 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        /* 이 불러오는 테스트용 버튼은 자바 콜렉션 오류만 수정하면 바로 사용가능.
-            나중에 버튼 대신에 입력받으면 연결하는 방식으로 넣으면 됨.
+        /*
+        데이터 불러오는 샘플용
+        콜렉션 오류. 해결 요망
          */
         /**button3.setOnClickListener(new View.OnClickListener(){
 
@@ -326,5 +327,6 @@ public class MainActivity extends AppCompatActivity {
      String currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
 
      //텍스트뷰에 현재 시간과 날짜를 출력
+     // 버튼에 입력이 되도록 수정할 필요가 있음.
      textView.setText(currentDateTimeString); */
 }
