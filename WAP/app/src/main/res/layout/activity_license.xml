@@ -3,4 +3,12 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome to WAP!
+        We're License is Open Source License MIT.
+        This Software is free for use, but write this License in important
+        We don't have any responsibility"/>
+
 </LinearLayout>
