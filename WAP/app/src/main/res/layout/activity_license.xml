@@ -7,8 +7,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Welcome to WAP!
-        We're License is Open Source License MIT.
-        This Software is free for use, but write this License in important
-        We don't have any responsibility"/>
+
+Our License follows MIT Open Source License.
+This Software is free to use, but mark this license is important when you make project using our project.
+We don't have any responsibility for that you weren't mark MIT License."/>
 
 </LinearLayout>
