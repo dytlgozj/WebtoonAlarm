@@ -22,6 +22,9 @@ import android.view.MenuItem;
 import java.util.List;
 
 public class SettingsActivity extends AppCompatPreferenceActivity {
+
+    private BackPressCloseHandler backPressCloseHandler;
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()){
@@ -238,5 +241,10 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
             }
             return super.onOptionsItemSelected(item);
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        backPressCloseHandler.onBackPressed();
     }
 }
