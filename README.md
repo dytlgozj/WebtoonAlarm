@@ -13,9 +13,17 @@
 
 * MIT License
 
+### Approximate license content 
+
+* Use free, but mark this license when you copy this in important part. and writer doesn't have any responsibility.
+
 ## Purpose
 
-* To notice the aimed webtoon update.
+* To notice the aimed webtoon update in Naver.
+
+### Directing point
+
+* To notice the aimed webtoon update in all platform webtoon
 
 ## Used Language
 
@@ -40,6 +48,11 @@
 
 * Simple, and clear UI.
 * The eidtic flow of function.
+
+## Future plans
+
+* Add supproted and mainline webtoon platform.
+* ex) Daum
 
 ## What we want to tester
 
