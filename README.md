@@ -49,6 +49,11 @@
 * Simple, and clear UI.
 * The eidtic flow of function.
 
+## Future plans
+
+* Add supproted and mainline webtoon platform.
+* ex) Daum
+
 ## What we want to tester
 
 * It may not be completed within the deadline. If there is anyone who can help us, please help us because we are stuck.
