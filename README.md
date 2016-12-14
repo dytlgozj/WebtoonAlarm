@@ -11,7 +11,11 @@
 
 ## Open Source License
 
-* MIT License : Use free, but mark this license when you copy this in important part. and writer doesn't have any responsibility.
+* MIT License
+
+### Approximate license content 
+
+* Use free, but mark this license when you copy this in important part. and writer doesn't have any responsibility.
 
 ## Purpose
 
