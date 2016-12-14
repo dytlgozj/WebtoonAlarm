@@ -9,11 +9,25 @@
 * This app contains notification function.
 * This app will be worked in Naver Webtoon at first trial test.
 
+##  Introduction of team developer member
+
+* Nickname : dytlgozj(JoengUm Lee)
+* Wiki page link : https://dytlgozj.github.io
+* Introduction : Hanyang University ERICA Campus student 1st grade
+
+* Nickname : Libria(JunGi Lee)
+* wiki page link : https://Libria.github.io
+* Introduction : Hanyang University ERICA Campus student 1st grade
+
+* Nickname : jaehak0323(Jahak Lee)
+* wiki page link : https://jaehak0323.github.io
+* Introduction : Hanyang University ERICA Campus student 1st grade
+
 ## Open Source License
 
 * MIT License
 
-### Approximate license content 
+### Approximate license content
 
 * Use free, but mark this license when you copy this in important part. and writer doesn't have any responsibility.
 
