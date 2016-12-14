@@ -11,11 +11,15 @@
 
 ## Open Source License
 
-* MIT License
+* MIT License : Use free, but mark this license when you copy this in important part. and writer doesn't have any responsibility.
 
 ## Purpose
 
-* To notice the aimed webtoon update.
+* To notice the aimed webtoon update in Naver.
+
+### Directing point
+
+* To notice the aimed webtoon update in all platform webtoon
 
 ## Used Language
 
