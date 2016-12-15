@@ -33,11 +33,11 @@
 
 ## Purpose
 
-* To notice the aimed webtoon update in Naver.
+* We want to notice the aimed webtoon update in Naver.
 
 ### Directing point
 
-* To notice the aimed webtoon update in all platform webtoon
+* We want to notice the aimed webtoon update in all platform webtoon.
 
 ## Used Language
 
@@ -65,8 +65,9 @@
 
 ## Future plans
 
-* Add supproted and mainline webtoon platform.
-* ex) Daum
+* Add more supporter
+* Add mainline webtoon platform.
+* ex) Daum, kToon, Nate.. etc.
 
 ## What we want to tester
 
