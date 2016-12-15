@@ -71,4 +71,3 @@
 ## What we want to tester
 
 * It may not be completed within the deadline. If there is anyone who can help us, please help us because we are stuck.
-* If you want to commit our open source software or any advice, Our door is always Open!
