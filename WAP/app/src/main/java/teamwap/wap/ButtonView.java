@@ -1,6 +1,7 @@
 /* 하드코딩해서 오류랑 코딩스타일같은거  안잡음 */
 /*바깥에서 접근시 ButtonView bv = new ButtonView(getContext()); 등으로 접근 */
 /* 동적레이아웃임 참고하셈 */
+
 import android.content.*;
 import android.view.*;
 import android.widget.*;

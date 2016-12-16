@@ -1,3 +1,5 @@
+/*아예 안돌아가니까 당장은 지우겠음 ^^; 올릴 땐 같이 넣어서 올림*/
+
 package teamwap.wap;
 
 import android.app.Activity;
