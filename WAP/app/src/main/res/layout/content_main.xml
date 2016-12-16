@@ -9,6 +9,18 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_main">
 
+    <LinearLayout android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:drawSelectorOnTop="false"></ListView>
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -45,8 +57,4 @@
         android:textColorLink="?attr/colorBackgroundFloating"
         android:textColor="@android:color/background_light" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Welcome to WAP!" />
 </LinearLayout>
