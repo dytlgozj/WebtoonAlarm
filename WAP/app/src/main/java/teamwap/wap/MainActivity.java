@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -23,6 +24,7 @@ import java.text.DateFormat;
 import java.util.ArrayList;
 import java.io.*;
 import java.util.Date;
+import java.util.List;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -335,5 +337,31 @@ public class MainActivity extends AppCompatActivity {
      //텍스트뷰에 현재 시간과 날짜를 출력
      // 버튼에 입력이 되도록 수정할 필요가 있음.
      textView.setText(currentDateTimeString); */
+
+    public boolean loadItemsFromDB(ArrayList<ListViewBtnItem> list){
+        // 저 버튼 3에 임시로 적어놓은 불러오기 코드를 수정해서
+        // 여기로 가져오면 로드해서 자동으로 리스트뷰 아이템에 추가하도록 설계.
+        ListViewBtnItem item;
+        int i;
+
+        if (list == null){
+            list = new ArrayList<ListViewBtnItem>();
+        }
+        i = 0;
+
+        while(i < webtoonInL.size()){
+            item = new ListViewBtnItem();
+            // 아이콘 설정 파싱해서 가져온걸로 넣도록 하면 됨.
+            item.setIcon(ContextCompat.getDrawable(this, R.mipmap.ic_launcher));
+            webtoonIn webtoonIn1 = webtoonInL.get(i);
+            String name = webtoonIn1.get_name();
+            item.setText(name);
+            list.add(item);
+            
+            i++;
+        }
+
+        return true;
+    }
 
 }

@@ -11,6 +11,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,7 +26,7 @@ import android.widget.Toast;
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
-                                                        // 이 부분 왜 오류생기는지 못잡았음
+// 이 부분 왜 오류생기는지 못잡았음
 public class ListViewBtnAdapter extends ArrayAdapter {//implements View.OnClickListener {
     // Listener 인터페이스 정의
     public interface  ListBtnClickListener{
@@ -54,18 +55,20 @@ public class ListViewBtnAdapter extends ArrayAdapter {//implements View.OnClickL
 
         final ImageView iconImageView = (ImageView) convertView.findViewById(R.id.imageView1);
         // 텍스트뷰 추가시 사용
-        //final TextView textTextView = (TextView) convertView.findViewById(R.id.textView1);
+        final TextView textTextView = (TextView) convertView.findViewById(R.id.textView1);
 
         final ListViewBtnItem listViewItem = (ListViewBtnItem) getItem(position);
 
         iconImageView.setImageDrawable(listViewItem.getIcon());
-        //textTextView.setText(listViewItem.getText());
+        textTextView.setText(listViewItem.getText());
 
         ImageButton button1 = (ImageButton) convertView.findViewById(R.id.imageView1);
         button1.setOnClickListener(new ImageButton.OnClickListener(){
             public void onClick(View v){
-                // 이걸 어레이리스트 webttonIn 받아와서 하도록 설정해야함.
+                // 이걸 어레이리스트 webttonIn 받아와서 하도록 설정해야함. 이건 샘플
                 Toast.makeText(context, "네이버 웹툰 페이지로 이동합니다.", Toast.LENGTH_SHORT).show();
+                Intent mIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://comic.naver.com/webtoon/weekday.nhn"));
+                context.startActivity(mIntent);
             }
         });
 
