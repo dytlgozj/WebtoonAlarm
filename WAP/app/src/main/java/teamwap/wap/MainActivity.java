@@ -38,14 +38,13 @@ import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.appindexing.Thing;
 import com.google.android.gms.common.api.GoogleApiClient;
 
-import static teamwap.wap.R.id.textView;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements ListViewBtnAdapter.ListBtnClickListener{
     Button button1;
     Button button2;
     Button button3;
@@ -54,9 +53,6 @@ public class MainActivity extends AppCompatActivity {
     File f;
     private GoogleApiClient client;
     private BackPressCloseHandler backPressCloseHandler;
-
-    private ListView m_ListView;
-    private ArrayAdapter<String> m_adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +66,17 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setIcon(R.mipmap.ic_launcher2);
 
         backPressCloseHandler = new BackPressCloseHandler(this);
+
+        ListView listView;
+        ListViewBtnAdapter adapter;
+        ArrayList<ListViewBtnItem> items = new ArrayList<ListViewBtnItem>();
+
+        loadItemsFromDB(items);
+
+        adapter = new ListViewBtnAdapter(this, R.layout.listview_btn_item, items, this);
+
+        listView = (ListView) findViewById(R.id.listview);
+        listView.setAdapter(adapter);
 
 
         button1 = (Button) findViewById(R.id.button1);
@@ -172,7 +179,6 @@ public class MainActivity extends AppCompatActivity {
                                 try {
                                     ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(f));
                                     oos.writeObject(webtoonInL);
-                                    m_adapter.notifyDataSetChanged();
                                 } catch (IOException ioe) {
                                     ioe.printStackTrace();
                                 }
@@ -220,7 +226,6 @@ public class MainActivity extends AppCompatActivity {
                                     }
 
                                     f = new File(getFilesDir(), "webtoonInfor.dat");
-                                    m_adapter.notifyDataSetChanged();
                                     try {
                                         ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(f));
                                         oos.writeObject(webtoonInL);
@@ -240,6 +245,17 @@ public class MainActivity extends AppCompatActivity {
         });
         getSupportActionBar().setIcon(R.mipmap.ic_launcher);
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+
+        //ListView 아이템 클릭 이벤트에 대한 처리. (핸들러 정의)
+        // 통째로 오류남 ㅠㅠ;
+        /*
+        listView.setOnClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView parent, View v, int position, long id){
+                // TODO : item click
+            }
+        });
+        */
     }
 
     @Override
@@ -357,11 +373,20 @@ public class MainActivity extends AppCompatActivity {
             String name = webtoonIn1.get_name();
             item.setText(name);
             list.add(item);
-            
+
             i++;
         }
 
         return true;
     }
 
+    @Override
+    public void onListBtnClick(int position) {
+        webtoonIn webtoonIn1 = webtoonInL.get(position);
+        String name = webtoonIn1.get_name();
+        String urll = webtoonIn1.get_url();
+        Toast.makeText(getApplicationContext(), name + " 페이지로 이동합니다.", Toast.LENGTH_SHORT).show();
+        Intent mIntent2 = new Intent(Intent.ACTION_VIEW, Uri.parse(urll));
+        startActivity(mIntent2);
+    }
 }

@@ -26,8 +26,9 @@ import android.widget.Toast;
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
-// 이 부분 왜 오류생기는지 못잡았음
-public class ListViewBtnAdapter extends ArrayAdapter {//implements View.OnClickListener {
+
+public class ListViewBtnAdapter extends ArrayAdapter implements View.OnClickListener {
+
     // Listener 인터페이스 정의
     public interface  ListBtnClickListener{
         void onListBtnClick(int position);
@@ -63,15 +64,16 @@ public class ListViewBtnAdapter extends ArrayAdapter {//implements View.OnClickL
         textTextView.setText(listViewItem.getText());
 
         ImageButton button1 = (ImageButton) convertView.findViewById(R.id.imageView1);
-        button1.setOnClickListener(new ImageButton.OnClickListener(){
-            public void onClick(View v){
-                // 이걸 어레이리스트 webttonIn 받아와서 하도록 설정해야함. 이건 샘플
-                Toast.makeText(context, "네이버 웹툰 페이지로 이동합니다.", Toast.LENGTH_SHORT).show();
-                Intent mIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://comic.naver.com/webtoon/weekday.nhn"));
-                context.startActivity(mIntent);
-            }
-        });
+        button1.setTag(position);
+        button1.setOnClickListener(this);
 
-    return convertView;
+        return convertView;
+    }
+
+    // MainActivity에 있는 리스너랑 상호작용 하는 코드임
+    public void onClick(View v){
+        if (this.listBtnClickListener != null){
+            this.listBtnClickListener.onListBtnClick((int)v.getTag());
+        }
     }
 }
