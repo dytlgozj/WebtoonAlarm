@@ -7,6 +7,7 @@
     <string name="strBtn3">Test</string>
     <string name="strBtn4">알림 테스트 버튼</string>
     <string name="title_activity_settings">환경 설정</string>
+    <string name="listview">listview</string>
 
     <!-- Strings related to Settings -->
 

@@ -37,6 +37,10 @@ import com.google.android.gms.appindexing.Thing;
 import com.google.android.gms.common.api.GoogleApiClient;
 
 import static teamwap.wap.R.id.textView;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -48,6 +52,9 @@ public class MainActivity extends AppCompatActivity {
     File f;
     private GoogleApiClient client;
     private BackPressCloseHandler backPressCloseHandler;
+
+    private ListView m_ListView;
+    private ArrayAdapter<String> m_adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setIcon(R.mipmap.ic_launcher2);
 
         backPressCloseHandler = new BackPressCloseHandler(this);
+
 
         button1 = (Button) findViewById(R.id.button1);
         button1.setBackgroundColor(Color.BLACK);
@@ -118,6 +126,7 @@ public class MainActivity extends AppCompatActivity {
         });*/
 
         /* 지금은 테스트 버튼이지만 새롭게 웹툰이 올라오면 NotificationSomethings 함수 호출하도록 수정하면 됨 */
+
         button3 = (Button) findViewById(R.id.button3);
         button3.setBackgroundColor(Color.BLACK);
         button3.setTextColor(Color.WHITE);
@@ -128,6 +137,7 @@ public class MainActivity extends AppCompatActivity {
                 NotificationSomethings();
             }
         });
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -160,6 +170,7 @@ public class MainActivity extends AppCompatActivity {
                                 try {
                                     ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(f));
                                     oos.writeObject(webtoonInL);
+                                    m_adapter.notifyDataSetChanged();
                                 } catch (IOException ioe) {
                                     ioe.printStackTrace();
                                 }
@@ -207,6 +218,7 @@ public class MainActivity extends AppCompatActivity {
                                     }
 
                                     f = new File(getFilesDir(), "webtoonInfor.dat");
+                                    m_adapter.notifyDataSetChanged();
                                     try {
                                         ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(f));
                                         oos.writeObject(webtoonInL);
@@ -323,4 +335,5 @@ public class MainActivity extends AppCompatActivity {
      //텍스트뷰에 현재 시간과 날짜를 출력
      // 버튼에 입력이 되도록 수정할 필요가 있음.
      textView.setText(currentDateTimeString); */
+
 }
