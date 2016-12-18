@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -23,6 +24,7 @@ import java.text.DateFormat;
 import java.util.ArrayList;
 import java.io.*;
 import java.util.Date;
+import java.util.List;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -36,14 +38,13 @@ import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.appindexing.Thing;
 import com.google.android.gms.common.api.GoogleApiClient;
 
-import static teamwap.wap.R.id.textView;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements ListViewBtnAdapter.ListBtnClickListener{
     Button button1;
     Button button2;
     Button button3;
@@ -52,9 +53,6 @@ public class MainActivity extends AppCompatActivity {
     File f;
     private GoogleApiClient client;
     private BackPressCloseHandler backPressCloseHandler;
-
-    private ListView m_ListView;
-    private ArrayAdapter<String> m_adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +66,17 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setIcon(R.mipmap.ic_launcher2);
 
         backPressCloseHandler = new BackPressCloseHandler(this);
+
+        ListView listView;
+        ListViewBtnAdapter adapter;
+        ArrayList<ListViewBtnItem> items = new ArrayList<ListViewBtnItem>();
+
+        loadItemsFromDB(items);
+
+        adapter = new ListViewBtnAdapter(this, R.layout.listview_btn_item, items, this);
+
+        listView = (ListView) findViewById(R.id.listview);
+        listView.setAdapter(adapter);
 
 
         button1 = (Button) findViewById(R.id.button1);
@@ -170,7 +179,6 @@ public class MainActivity extends AppCompatActivity {
                                 try {
                                     ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(f));
                                     oos.writeObject(webtoonInL);
-                                    m_adapter.notifyDataSetChanged();
                                 } catch (IOException ioe) {
                                     ioe.printStackTrace();
                                 }
@@ -218,7 +226,6 @@ public class MainActivity extends AppCompatActivity {
                                     }
 
                                     f = new File(getFilesDir(), "webtoonInfor.dat");
-                                    m_adapter.notifyDataSetChanged();
                                     try {
                                         ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(f));
                                         oos.writeObject(webtoonInL);
@@ -238,6 +245,17 @@ public class MainActivity extends AppCompatActivity {
         });
         getSupportActionBar().setIcon(R.mipmap.ic_launcher);
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+
+        //ListView 아이템 클릭 이벤트에 대한 처리. (핸들러 정의)
+        // 통째로 오류남 ㅠㅠ;
+        /*
+        listView.setOnClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView parent, View v, int position, long id){
+                // TODO : item click
+            }
+        });
+        */
     }
 
     @Override
@@ -336,4 +354,39 @@ public class MainActivity extends AppCompatActivity {
      // 버튼에 입력이 되도록 수정할 필요가 있음.
      textView.setText(currentDateTimeString); */
 
+    public boolean loadItemsFromDB(ArrayList<ListViewBtnItem> list){
+        // 저 버튼 3에 임시로 적어놓은 불러오기 코드를 수정해서
+        // 여기로 가져오면 로드해서 자동으로 리스트뷰 아이템에 추가하도록 설계.
+        ListViewBtnItem item;
+        int i;
+
+        if (list == null){
+            list = new ArrayList<ListViewBtnItem>();
+        }
+        i = 0;
+
+        while(i < webtoonInL.size()){
+            item = new ListViewBtnItem();
+            // 아이콘 설정 파싱해서 가져온걸로 넣도록 하면 됨.
+            item.setIcon(ContextCompat.getDrawable(this, R.mipmap.ic_launcher));
+            webtoonIn webtoonIn1 = webtoonInL.get(i);
+            String name = webtoonIn1.get_name();
+            item.setText(name);
+            list.add(item);
+
+            i++;
+        }
+
+        return true;
+    }
+
+    @Override
+    public void onListBtnClick(int position) {
+        webtoonIn webtoonIn1 = webtoonInL.get(position);
+        String name = webtoonIn1.get_name();
+        String urll = webtoonIn1.get_url();
+        Toast.makeText(getApplicationContext(), name + " 페이지로 이동합니다.", Toast.LENGTH_SHORT).show();
+        Intent mIntent2 = new Intent(Intent.ACTION_VIEW, Uri.parse(urll));
+        startActivity(mIntent2);
+    }
 }

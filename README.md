@@ -26,6 +26,7 @@
 ## Open Source License
 
 * MIT License
+* MIT License site : https://opensource.org/licenses/MIT
 
 ### Approximate license content
 
