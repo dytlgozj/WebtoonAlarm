@@ -9,7 +9,7 @@
 * This app contains notification function.
 * This app will be worked in Naver Webtoon at first trial test.
 
-##  Introduction of team developer member
+## Introduction of team developer member
 
 * Nickname : dytlgozj(JoengUm Lee)
 * Wiki page link : https://dytlgozj.github.io
@@ -23,9 +23,9 @@
 * wiki page link : https://jaehak0323.github.io
 * Introduction : Hanyang University ERICA Campus student 1st grade
 
-## Open Source License
+## License
 
-* MIT License
+* Open Source MIT License
 * MIT License site : https://opensource.org/licenses/MIT
 
 ### Approximate license content
@@ -47,10 +47,10 @@
 
 ## Project development tool
 
-* Android Studio
-* Github
+* Android Studio (Development)
+* Github (VCS)
 
-## Expected function
+## Function that we want to make
 
 * Save Webtoon Information that what you want to be noticed.
 * In main app, webtoon page link on button what you saved
@@ -59,7 +59,7 @@
 * Notification can be set : vibration, bell, and just notification.
 *  - If notification is clicked, move to webtoon page.    
 
-## UI design target
+## Design of UI
 
 * Simple, and clear UI.
 * The eidtic flow of function.
