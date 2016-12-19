@@ -45,6 +45,14 @@
 * Java
 * XML
 
+## Development environment
+
+* Windows 10 & Mac OS 10.12.2
+* Android Studio version 2.2.2
+* Android SDK 25
+* Java version 1.8.0_111
+* Jsoup version 1.10.1
+
 ## Used Open Source
 
 * jsoup (Java HTML Parser, Used license : liberal MIT License)
