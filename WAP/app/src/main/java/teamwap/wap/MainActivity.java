@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
@@ -43,6 +44,8 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import java.lang.ClassNotFoundException;
+
 
 public class MainActivity extends AppCompatActivity implements ListViewBtnAdapter.ListBtnClickListener{
     Button button1;
@@ -69,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements ListViewBtnAdapte
 
         ListView listView;
         ListViewBtnAdapter adapter;
-        ArrayList<ListViewBtnItem> items = new ArrayList<ListViewBtnItem>();
+        final ArrayList<ListViewBtnItem> items = new ArrayList<ListViewBtnItem>();
 
         loadItemsFromDB(items);
 
@@ -112,28 +115,30 @@ public class MainActivity extends AppCompatActivity implements ListViewBtnAdapte
         데이터 불러오는 샘플용
         콜렉션 오류. 해결 요망
          */
-        /**button3.setOnClickListener(new View.OnClickListener(){
+        /*button3.setOnClickListener(new View.OnClickListener(){
 
         @Override public void onClick(View v){
         int i;
 
         f = new java.io.File(getFilesDir(),"webtoonInfor.dat");
+        ObjectInputStream ois = null;
+        ArrayList list;
 
         try {
-        ObjectInputStream ois = new ObjectInputStream(new FileInputStream(f));
-        ArrayList list = ois.readObject();
+            ois = new ObjectInputStream(new FileInputStream(f));
+            list = (ArrayList) ois.readObject();
+        }catch(IOException ioe){
+            ioe.printStackTrace();
+        }
 
         for (i=0; i < list.size(); i++){
         webtoonInL.add(list.get(i));
         }
 
-        }catch(IOException ioe){
-        }
-
         Toast.makeText(getApplicationContext(), webtoonInL.get(0).get_name(), Toast.LENGTH_SHORT).show();
         }
-        });*/
-
+        });
+        */
         /* 지금은 테스트 버튼이지만 새롭게 웹툰이 올라오면 NotificationSomethings 함수 호출하도록 수정하면 됨 */
 
         button3 = (Button) findViewById(R.id.button3);
@@ -184,6 +189,19 @@ public class MainActivity extends AppCompatActivity implements ListViewBtnAdapte
                                 }
 
                                 Toast.makeText(getApplicationContext(), "등록되었습니다.", Toast.LENGTH_SHORT).show();
+                                items.clear();
+                                webtoonInL.clear();
+                                loadItemsFromDB(items);
+                                restarLlistView(items);
+                                /*new Handler().postDelayed(new Runnable()
+                                {
+                                    @Override
+                                    public void run()
+                                    {
+                                        items.clear();
+                                        loadItemsFromDB(items);
+                                    }
+                                }, 500);//*/
                             }
                         })
                         .setNeutralButton("취소", new DialogInterface.OnClickListener() {
@@ -233,6 +251,19 @@ public class MainActivity extends AppCompatActivity implements ListViewBtnAdapte
                                     }
                                 }
                                 Toast.makeText(getApplicationContext(), "삭제되었습니다.", Toast.LENGTH_SHORT).show();
+                                items.clear();
+                                webtoonInL.clear();
+                                loadItemsFromDB(items);
+                                restarLlistView(items);
+                                /*new Handler().postDelayed(new Runnable()
+                                {
+                                    @Override
+                                    public void run()
+                                    {
+                                        items.clear();
+                                        loadItemsFromDB(items);
+                                    }
+                                }, 500);//*/
                             }
                         })
                         .setNegativeButton("취소", new DialogInterface.OnClickListener() {
@@ -354,9 +385,39 @@ public class MainActivity extends AppCompatActivity implements ListViewBtnAdapte
      // 버튼에 입력이 되도록 수정할 필요가 있음.
      textView.setText(currentDateTimeString); */
 
+    public boolean loadFromData(ArrayList<webtoonIn> list){
+        int i;
+
+        f = new java.io.File(getFilesDir(),"webtoonInfor.dat");
+        ObjectInputStream ois = null;
+        ArrayList list2;
+
+        try {
+            ois = new ObjectInputStream(new FileInputStream(f));
+            try{
+                list2 = (ArrayList) ois.readObject();
+
+                for (i=0; i < list2.size(); i++){
+                    webtoonIn input = (webtoonIn)list2.get(i);
+                    list.add(input);
+                }
+            }catch(ClassNotFoundException e){
+                e.printStackTrace();
+            }
+        }catch(IOException ioe){
+            ioe.printStackTrace();
+        }
+
+        return true;
+    }
+
     public boolean loadItemsFromDB(ArrayList<ListViewBtnItem> list){
         // 저 버튼 3에 임시로 적어놓은 불러오기 코드를 수정해서
         // 여기로 가져오면 로드해서 자동으로 리스트뷰 아이템에 추가하도록 설계.
+        // loadFromData로 구현했음.
+        webtoonInL.clear();
+        loadFromData(webtoonInL);
+
         ListViewBtnItem item;
         int i;
 
@@ -388,5 +449,19 @@ public class MainActivity extends AppCompatActivity implements ListViewBtnAdapte
         Toast.makeText(getApplicationContext(), name + " 페이지로 이동합니다.", Toast.LENGTH_SHORT).show();
         Intent mIntent2 = new Intent(Intent.ACTION_VIEW, Uri.parse(urll));
         startActivity(mIntent2);
+    }
+
+    // 왠지모르게 안돌아간다..?
+    public void restarLlistView(ArrayList<ListViewBtnItem> items){
+        ListView listView;
+        ListViewBtnAdapter adapter;
+        items = new ArrayList<ListViewBtnItem>();
+
+        loadItemsFromDB(items);
+
+        adapter = new ListViewBtnAdapter(this, R.layout.listview_btn_item, items, this);
+
+        listView = (ListView) findViewById(R.id.listview);
+        listView.setAdapter(adapter);
     }
 }
