@@ -45,6 +45,10 @@
 * Java
 * XML
 
+## Used Open Source
+
+* jsoup (Java HTML Parser, Used license : liberal MIT License)
+
 ## Project development tool
 
 * Android Studio (Development)
