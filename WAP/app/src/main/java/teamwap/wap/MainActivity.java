@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements ListViewBtnAdapte
 
         ListView listView;
         ListViewBtnAdapter adapter;
-        final ArrayList<ListViewBtnItem> items = new ArrayList<ListViewBtnItem>();
+        ArrayList<ListViewBtnItem> items = new ArrayList<ListViewBtnItem>();
 
         loadItemsFromDB(items);
 
@@ -122,7 +122,7 @@ public class MainActivity extends AppCompatActivity implements ListViewBtnAdapte
 
         f = new java.io.File(getFilesDir(),"webtoonInfor.dat");
         ObjectInputStream ois = null;
-        ArrayList list;
+        ArrayList<ListViewBtnItem> list;
 
         try {
             ois = new ObjectInputStream(new FileInputStream(f));
@@ -429,6 +429,12 @@ public class MainActivity extends AppCompatActivity implements ListViewBtnAdapte
         while(i < webtoonInL.size()){
             item = new ListViewBtnItem();
             // 아이콘 설정 파싱해서 가져온걸로 넣도록 하면 됨.
+
+            // 파싱코드
+            /* String html = "<html><head><title>parse</title></head>"
+                    + "<body><p>http://comic.naver.com/webtoon/weekday.nhn</p></body></html>";
+            Document doc = Jsoup.parse(html); */
+
             item.setIcon(ContextCompat.getDrawable(this, R.mipmap.ic_launcher));
             webtoonIn webtoonIn1 = webtoonInL.get(i);
             String name = webtoonIn1.get_name();
