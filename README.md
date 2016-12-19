@@ -50,7 +50,7 @@
 * Android Studio (Development)
 * Github (VCS)
 
-## Function that we want to make
+## Expected Function
 
 * Save Webtoon Information that what you want to be noticed.
 * In main app, webtoon page link on button what you saved
@@ -59,7 +59,7 @@
 * Notification can be set : vibration, bell, and just notification.
 *  - If notification is clicked, move to webtoon page.    
 
-## Design of UI
+## UI Design target
 
 * Simple, and clear UI.
 * The eidtic flow of function.
