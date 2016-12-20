@@ -3,12 +3,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageButton
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:id="@+id/imageView1"
-        android:padding="0dp"
-        android:src="@mipmap/ic_launcher"
         android:layout_weight="1" />
 
     <TextView
@@ -17,8 +15,15 @@
         android:text=""
         android:id="@+id/textView1"
         android:textSize="16dp"
-        android:textColor="#FFFFFF"
+        android:textColor="#000000"
         android:gravity="center_vertical"
         android:layout_weight="4"/>
+
+    <Button
+        android:id="@+id/buttonb"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:text="이동 하기"
+        android:layout_weight="1"/>
 
 </LinearLayout>

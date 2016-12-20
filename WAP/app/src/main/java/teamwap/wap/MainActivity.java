@@ -57,6 +57,8 @@ public class MainActivity extends AppCompatActivity implements ListViewBtnAdapte
     private GoogleApiClient client;
     private BackPressCloseHandler backPressCloseHandler;
 
+    int btnnum = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,7 +72,11 @@ public class MainActivity extends AppCompatActivity implements ListViewBtnAdapte
 
         backPressCloseHandler = new BackPressCloseHandler(this);
 
-        /*
+        webtoonIn test0 = new webtoonIn("네이버 웹툰", "http://comic.naver.com/webtoon/weekday.nhn");
+        webtoonInL.add(test0);
+        webtoonIn test1 = new webtoonIn("가우스 전자", "http://m.comic.naver.com/webtoon/list.nhn?titleId=675554&week=thu");
+        webtoonInL.add(test1);
+
         ListView listView;
         ListViewBtnAdapter adapter;
         final ArrayList<ListViewBtnItem> items = new ArrayList<ListViewBtnItem>();
@@ -79,7 +85,9 @@ public class MainActivity extends AppCompatActivity implements ListViewBtnAdapte
 
         listView = (ListView) findViewById(R.id.listview);
         listView.setAdapter(adapter);
-        */
+
+        loadItemsFromDB(items);
+
 
         button1 = (Button) findViewById(R.id.button1);
         button1.setBackgroundColor(Color.BLACK);
@@ -282,14 +290,14 @@ public class MainActivity extends AppCompatActivity implements ListViewBtnAdapte
 
         //ListView 아이템 클릭 이벤트에 대한 처리. (핸들러 정의)
         // 통째로 오류남 ㅠㅠ;
-        /*
-        listView.setOnClickListener(new AdapterView.OnItemClickListener(){
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView parent, View v, int position, long id){
                 // TODO : item click
             }
         });
-        */
+
     }
 
     @Override
@@ -444,7 +452,7 @@ public class MainActivity extends AppCompatActivity implements ListViewBtnAdapte
         return true;
     }
 
-    @Override
+    //@Override
     public void onListBtnClick(int position) {
         webtoonIn webtoonIn1 = webtoonInL.get(position);
         String name = webtoonIn1.get_name();
@@ -462,9 +470,10 @@ public class MainActivity extends AppCompatActivity implements ListViewBtnAdapte
 
         loadItemsFromDB(items);
 
-        adapter = new ListViewBtnAdapter(this, R.layout.listview_btn_item, items, this);
+        //adapter = new ListViewBtnAdapter(this, R.layout.listview_btn_item, items, this);
 
         //listView = (ListView) findViewById(R.id.listview);
         //listView.setAdapter(adapter);
     }
+
 }
