@@ -91,6 +91,6 @@
 <img src="http://i65.tinypic.com/2nh3zhd.png" height = "200" width = "120">
 <img src="http://i65.tinypic.com/23uo7pz.png" height = "200" width = "120">
 <img src="http://i64.tinypic.com/oad7wx.png" height = "200" width = "120">
-* The first screenshot shows that the ListView layout working properly.
-* Second screenshot show that your notification are working properly.
-* Last screenshot show you which design you have made your environment setup for.
+* The first screenshot shows the main screen. In this screenshot, you can saw that we had have made ListView layout.
+* Second screenshot show that your notification are working normally. you can also show that your notification is located on the smart phone notification top bar.
+* Last screenshot show you what we've implemented in setting_activity. There is three options that can manage how notificate to users. (Ringtone, Vibration, Just notification on top bar)
