@@ -85,3 +85,7 @@
 ## What we want to tester
 
 * It may not be completed within the deadline. If there is anyone who can help us, please help us because we are stuck.
+
+## A trial Performance
+
+* <img src="http://i65.tinypic.com/2nh3zhd.png" height = "200" width = "120">
