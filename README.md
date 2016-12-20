@@ -88,4 +88,6 @@
 
 ## A trial Performance
 
-* <img src="http://i65.tinypic.com/2nh3zhd.png" height = "200" width = "120">
+<img src="http://i65.tinypic.com/2nh3zhd.png" height = "200" width = "120">
+<img src="http://i65.tinypic.com/23uo7pz.png" height = "200" width = "120">
+<img src="http://i64.tinypic.com/oad7wx.png" height = "200" width = "120">
