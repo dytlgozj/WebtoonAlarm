@@ -10,6 +10,8 @@ import android.support.v7.widget.Toolbar;
 
 
 /* 현재 Activity를 인식하지 못하는 오류가 있음 */
+    // 현재 실패한 액티비티
+    // 목적은 License 정보를 보여주기 위한 액티비티
 public class License extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {

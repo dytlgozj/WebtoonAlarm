@@ -72,10 +72,13 @@ public class MainActivity extends AppCompatActivity implements ListViewBtnAdapte
 
         backPressCloseHandler = new BackPressCloseHandler(this);
 
+
         webtoonIn test0 = new webtoonIn("네이버 웹툰", "http://comic.naver.com/webtoon/weekday.nhn");
         webtoonInL.add(test0);
         webtoonIn test1 = new webtoonIn("가우스 전자", "http://m.comic.naver.com/webtoon/list.nhn?titleId=675554&week=thu");
         webtoonInL.add(test1);
+
+        //loadFromData(webtoonInL);
 
         ListView listView;
         ListViewBtnAdapter adapter;
@@ -118,34 +121,6 @@ public class MainActivity extends AppCompatActivity implements ListViewBtnAdapte
         });
 
 
-        /*
-        데이터 불러오는 샘플용
-        콜렉션 오류. 해결 요망
-         */
-        /*button3.setOnClickListener(new View.OnClickListener(){
-
-        @Override public void onClick(View v){
-        int i;
-
-        f = new java.io.File(getFilesDir(),"webtoonInfor.dat");
-        ObjectInputStream ois = null;
-        ArrayList list;
-
-        try {
-            ois = new ObjectInputStream(new FileInputStream(f));
-            list = (ArrayList) ois.readObject();
-        }catch(IOException ioe){
-            ioe.printStackTrace();
-        }
-
-        for (i=0; i < list.size(); i++){
-        webtoonInL.add(list.get(i));
-        }
-
-        Toast.makeText(getApplicationContext(), webtoonInL.get(0).get_name(), Toast.LENGTH_SHORT).show();
-        }
-        });
-        */
         /* 지금은 테스트 버튼이지만 새롭게 웹툰이 올라오면 NotificationSomethings 함수 호출하도록 수정하면 됨 */
 
         button3 = (Button) findViewById(R.id.button3);
@@ -207,12 +182,12 @@ public class MainActivity extends AppCompatActivity implements ListViewBtnAdapte
                                 }
 
                                 //등록 되었음을 메시지로 띄워줌
+                                // 근데 왠지모르게 안된다.
                                 Toast.makeText(getApplicationContext(), "등록되었습니다.", Toast.LENGTH_SHORT).show();
 
                                 // listview를 다시 띄우기 위해 items 초기화
                                 // items을 다시 불러오는 함수를 호출하고, listview를 재시작
                                 items.clear();
-                                //webtoonInL.clear();
                                 loadItemsFromDB(items);
                                 restarLlistView(items);
 
@@ -277,6 +252,7 @@ public class MainActivity extends AppCompatActivity implements ListViewBtnAdapte
                                     }
 
                                     // 변경된 정보를 다시 핸드폰에 저장
+                                    // 근데 왠지모르게 안된다.
                                     f = new File(getFilesDir(), "webtoonInfor.dat");
                                     try {
                                         ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(f));
@@ -436,6 +412,7 @@ public class MainActivity extends AppCompatActivity implements ListViewBtnAdapte
 
 
     // 웹툰 정보 어레이리스트에 핸드폰에 저장된 정보를 가져오기 위해 만든 함수
+    // 왠지모르게 안된다
     public boolean loadFromData(ArrayList<webtoonIn> list){
         int i;
 
@@ -467,6 +444,7 @@ public class MainActivity extends AppCompatActivity implements ListViewBtnAdapte
         // 저 버튼 3에 임시로 적어놓은 불러오기 코드를 수정해서
         // 여기로 가져오면 로드해서 자동으로 리스트뷰 아이템에 추가하도록 설계.
         // loadFromData로 구현했음.
+        // 현재 오류로 주석처리
         //webtoonInL.clear();
         //loadFromData(webtoonInL);
 
