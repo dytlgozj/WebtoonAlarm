@@ -91,4 +91,6 @@
 <img src="http://i65.tinypic.com/2nh3zhd.png" height = "200" width = "120">
 <img src="http://i65.tinypic.com/23uo7pz.png" height = "200" width = "120">
 <img src="http://i64.tinypic.com/oad7wx.png" height = "200" width = "120">
-* This screenshot shows the ListView layout working properly.
+* The first screenshot shows that the ListView layout working properly.
+* Second screenshot show that your notification are working properly.
+* Last screenshot show you which design you have made your environment setup for.
