@@ -70,17 +70,16 @@ public class MainActivity extends AppCompatActivity implements ListViewBtnAdapte
 
         backPressCloseHandler = new BackPressCloseHandler(this);
 
+        /*
         ListView listView;
         ListViewBtnAdapter adapter;
-        ArrayList<ListViewBtnItem> items = new ArrayList<ListViewBtnItem>();
-
-        loadItemsFromDB(items);
+        final ArrayList<ListViewBtnItem> items = new ArrayList<ListViewBtnItem>();
 
         adapter = new ListViewBtnAdapter(this, R.layout.listview_btn_item, items, this);
 
         listView = (ListView) findViewById(R.id.listview);
         listView.setAdapter(adapter);
-
+        */
 
         button1 = (Button) findViewById(R.id.button1);
         button1.setBackgroundColor(Color.BLACK);
@@ -122,7 +121,7 @@ public class MainActivity extends AppCompatActivity implements ListViewBtnAdapte
 
         f = new java.io.File(getFilesDir(),"webtoonInfor.dat");
         ObjectInputStream ois = null;
-        ArrayList<ListViewBtnItem> list;
+        ArrayList list;
 
         try {
             ois = new ObjectInputStream(new FileInputStream(f));
@@ -189,10 +188,12 @@ public class MainActivity extends AppCompatActivity implements ListViewBtnAdapte
                                 }
 
                                 Toast.makeText(getApplicationContext(), "등록되었습니다.", Toast.LENGTH_SHORT).show();
+                                /*
                                 items.clear();
                                 webtoonInL.clear();
                                 loadItemsFromDB(items);
                                 restarLlistView(items);
+                                */
                                 /*new Handler().postDelayed(new Runnable()
                                 {
                                     @Override
@@ -251,10 +252,12 @@ public class MainActivity extends AppCompatActivity implements ListViewBtnAdapte
                                     }
                                 }
                                 Toast.makeText(getApplicationContext(), "삭제되었습니다.", Toast.LENGTH_SHORT).show();
+                                /*
                                 items.clear();
                                 webtoonInL.clear();
                                 loadItemsFromDB(items);
                                 restarLlistView(items);
+                                */
                                 /*new Handler().postDelayed(new Runnable()
                                 {
                                     @Override
@@ -415,8 +418,8 @@ public class MainActivity extends AppCompatActivity implements ListViewBtnAdapte
         // 저 버튼 3에 임시로 적어놓은 불러오기 코드를 수정해서
         // 여기로 가져오면 로드해서 자동으로 리스트뷰 아이템에 추가하도록 설계.
         // loadFromData로 구현했음.
-        webtoonInL.clear();
-        loadFromData(webtoonInL);
+        //webtoonInL.clear();
+        //loadFromData(webtoonInL);
 
         ListViewBtnItem item;
         int i;
@@ -429,12 +432,6 @@ public class MainActivity extends AppCompatActivity implements ListViewBtnAdapte
         while(i < webtoonInL.size()){
             item = new ListViewBtnItem();
             // 아이콘 설정 파싱해서 가져온걸로 넣도록 하면 됨.
-
-            // 파싱코드
-            /* String html = "<html><head><title>parse</title></head>"
-                    + "<body><p>http://comic.naver.com/webtoon/weekday.nhn</p></body></html>";
-            Document doc = Jsoup.parse(html); */
-
             item.setIcon(ContextCompat.getDrawable(this, R.mipmap.ic_launcher));
             webtoonIn webtoonIn1 = webtoonInL.get(i);
             String name = webtoonIn1.get_name();
@@ -467,7 +464,7 @@ public class MainActivity extends AppCompatActivity implements ListViewBtnAdapte
 
         adapter = new ListViewBtnAdapter(this, R.layout.listview_btn_item, items, this);
 
-        listView = (ListView) findViewById(R.id.listview);
-        listView.setAdapter(adapter);
+        //listView = (ListView) findViewById(R.id.listview);
+        //listView.setAdapter(adapter);
     }
 }

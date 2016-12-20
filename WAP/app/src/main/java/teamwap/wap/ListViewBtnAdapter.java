@@ -54,13 +54,13 @@ public class ListViewBtnAdapter extends ArrayAdapter implements View.OnClickList
             convertView = inflater.inflate(this.resourceId, parent, false);
         }
 
-        final ImageView iconImageView = (ImageView) convertView.findViewById(R.id.imageView1);
+        //final ImageView iconImageView = (ImageView) convertView.findViewById(R.id.imageView1);
         // 텍스트뷰 추가시 사용
         final TextView textTextView = (TextView) convertView.findViewById(R.id.textView1);
 
         final ListViewBtnItem listViewItem = (ListViewBtnItem) getItem(position);
 
-        iconImageView.setImageDrawable(listViewItem.getIcon());
+        //iconImageView.setImageDrawable(listViewItem.getIcon());
         textTextView.setText(listViewItem.getText());
 
         ImageButton button1 = (ImageButton) convertView.findViewById(R.id.imageView1);
