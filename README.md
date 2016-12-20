@@ -88,9 +88,9 @@
 
 ## Trial Performance Screenshots
 
-<img src="http://i65.tinypic.com/2nh3zhd.png" height = "200" width = "120">
-<img src="http://i65.tinypic.com/23uo7pz.png" height = "200" width = "120">
-<img src="http://i64.tinypic.com/oad7wx.png" height = "200" width = "120">
-* The first screenshot shows the main screen. In this screenshot, you can saw that we had have made ListView layout.
-* Second screenshot show that your notification are working normally. you can also show that your notification is located on the smart phone notification top bar.
-* Last screenshot show you what we've implemented in setting_activity. There is three options that can manage how notificate to users. (Ringtone, Vibration, Just notification on top bar)
+<img src="http://i65.tinypic.com/2nh3zhd.png" height = "250" width = "150">
+<img src="http://i65.tinypic.com/23uo7pz.png" height = "250" width = "150">
+<img src="http://i64.tinypic.com/oad7wx.png" height = "250" width = "150">
+* The first screenshot shows the main screen. In this screenshot, you can see our ListView layout and adding button dynamically.
+* Second screenshot shows that notification are working normally. you can see that your notification is located on the smart phone notification top bar.
+* Last screenshot shows you what has fuction in setting activity. There is three options that manages how to notificate to users. (Ringtone, Vibration, Just notification on top bar)
